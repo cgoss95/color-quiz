@@ -1,0 +1,15 @@
+export const START = "start";
+export const QUESTION_TYPE_MULTIPLE = "question-type-multiple";
+export const QUESTION_TYPE_IMAGE = "question-type-image";
+export const QUESTION_TYPE_TEXTFIELD = "question-type-textfield";
+export const QUESTION_TYPE_VIDEO = "question-type-video";
+export const RESULTS = "results";
+export const SET_LEVEL = "set-level";
+export const SET_RESULTS = "set-results";
+export const SET_NAME = "set-name";
+export const TEXT = "text";
+export const RESULT_RED = 0;
+export const RESULT_BLUE = 1;
+export const RESULT_YELLOW = 2;
+export const RESULT_GREEN = 3;
+export const RESULT_BLACK = 4;
