@@ -1,7 +1,7 @@
 {
   "name": "quiz",
   "version": "0.1.0",
-  "homepage": "https://cgoss95.github.io/color_quiz",
+  "homepage": "https://cgoss95.github.io/color-quiz",
   "private": true,
   "dependencies": {
     "flux": "^3.1.2",
