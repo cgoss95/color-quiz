@@ -57,23 +57,23 @@ export default [
         // Question two, this question doesn't influence the results at all.
         name: "question-two",
         type: QUESTION_TYPE_MULTIPLE,
-        question: "What is your gender?",
+        question: "What is your name?",
         choices: [
             {
                 // Choice one
-                answer: "Male",
+                answer: "Joshua",
                 result: 0,
                 add: 0
             },
             {
                 // Choice two
-                answer: "Female",
+                answer: "Karen",
                 result: 0,
                 add: 0
             },
             {
                 // Choice three
-                answer: "Chocolate bar",
+                answer: "Not listed",
                 result: 0,
                 add: 0
             }
