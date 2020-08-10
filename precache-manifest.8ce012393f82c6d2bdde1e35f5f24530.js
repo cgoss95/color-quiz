@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ac2c35f108b533ce251369200c5930e8",
+    "revision": "b3ba325cf7efdd39551d514cc346180b",
     "url": "/color-quiz/index.html"
   },
   {
-    "revision": "e1e8b4317aea04f0825d",
-    "url": "/color-quiz/static/css/main.61736f28.chunk.css"
+    "revision": "cf065d7f7cb91294b0fa",
+    "url": "/color-quiz/static/css/main.8bcba527.chunk.css"
   },
   {
     "revision": "2578aa7e2748db514234",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/color-quiz/static/js/2.1e786ba6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e1e8b4317aea04f0825d",
+    "revision": "cf065d7f7cb91294b0fa",
     "url": "/color-quiz/static/js/main.930f4922.chunk.js"
   },
   {
