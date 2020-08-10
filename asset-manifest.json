@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/color-quiz/static/css/main.8bcba527.chunk.css",
+    "main.css": "/color-quiz/static/css/main.85951fc3.chunk.css",
     "main.js": "/color-quiz/static/js/main.930f4922.chunk.js",
     "main.js.map": "/color-quiz/static/js/main.930f4922.chunk.js.map",
     "runtime-main.js": "/color-quiz/static/js/runtime-main.0c1a1c8d.js",
@@ -8,15 +8,15 @@
     "static/js/2.1e786ba6.chunk.js": "/color-quiz/static/js/2.1e786ba6.chunk.js",
     "static/js/2.1e786ba6.chunk.js.map": "/color-quiz/static/js/2.1e786ba6.chunk.js.map",
     "index.html": "/color-quiz/index.html",
-    "precache-manifest.8ce012393f82c6d2bdde1e35f5f24530.js": "/color-quiz/precache-manifest.8ce012393f82c6d2bdde1e35f5f24530.js",
+    "precache-manifest.c2383d12eafa64750c8a35c8ee2a84ff.js": "/color-quiz/precache-manifest.c2383d12eafa64750c8a35c8ee2a84ff.js",
     "service-worker.js": "/color-quiz/service-worker.js",
-    "static/css/main.8bcba527.chunk.css.map": "/color-quiz/static/css/main.8bcba527.chunk.css.map",
+    "static/css/main.85951fc3.chunk.css.map": "/color-quiz/static/css/main.85951fc3.chunk.css.map",
     "static/js/2.1e786ba6.chunk.js.LICENSE.txt": "/color-quiz/static/js/2.1e786ba6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.0c1a1c8d.js",
     "static/js/2.1e786ba6.chunk.js",
-    "static/css/main.8bcba527.chunk.css",
+    "static/css/main.85951fc3.chunk.css",
     "static/js/main.930f4922.chunk.js"
   ]
 }
