@@ -1,64 +1,78 @@
-import React from "react";
-import Level from "./Level";
-import Layout from "./Layout";
-import { SET_LEVEL, SET_RESULTS, SET_NAME } from "../constants";
-import "../index.css";
+import React from 'react';
+import Level from './Level';
+import Layout from './Layout';
+import { SET_LEVEL, SET_RESULTS, SET_NAME, RESET } from '../constants';
+import '../index.css';
 
 export default class Quiz extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            level: 0,
-            winningResult: 0,
-            result: [0, 0, 0, 0, 0]
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      level: 0,
+      winningResult: 0,
+      result: [0, 0, 0, 0, 0],
+      destinationsCompleted: [],
+    };
+  }
 
-    setGameState = (action, object = null) => {
-        if (action === SET_NAME) {
-            this.setState((prevState, props) => ({
-                name: object.name
-            }));
-        } else if (action === SET_RESULTS) {
-            // Changes level
-            // Store results into temporary variables
-            var resultTemp = this.state.result.slice();
-            var winningResultTemp = this.state.winningResult;
+  setGameState = (action, params = null) => {
+    if (action === SET_NAME) {
+      this.setState(() => ({
+        name: params.name,
+      }));
+    } else if (action === SET_RESULTS) {
+      // Changes level
+      // Store results into temporary variables
+      var resultTemp = this.state.result.slice();
+      var winningResultTemp = this.state.winningResult;
 
-            // Increment result score
-            resultTemp[object.result_index] =
-                resultTemp[object.result_index] + object.add;
+      // Increment result score
+      resultTemp[params.result_index] = resultTemp[params.result_index] + params.add;
 
-            // Check to see what the winning result is now.
-            for (var n = 0; n < resultTemp.length; n++) {
-                if (resultTemp[n] > resultTemp[winningResultTemp]) {
-                    winningResultTemp = n;
-                }
-            }
-
-            // Set the state
-            this.setState((prevState, props) => ({
-                result: resultTemp,
-                winningResult: winningResultTemp
-            }));
-        } else if (action === SET_LEVEL) {
-            this.setState((prevState, props) => ({
-                level: prevState.level + 1
-            }));
-        } else {
+      // Check to see what the winning result is now.
+      for (var n = 0; n < resultTemp.length; n++) {
+        if (resultTemp[n] > resultTemp[winningResultTemp]) {
+          winningResultTemp = n;
         }
+      }
+
+      // Set the state
+      this.setState(() => ({
+        result: resultTemp,
+        winningResult: winningResultTemp,
+      }));
+    } else if (action === SET_LEVEL) {
+      this.setState(({ level }) => ({
+        level: level + 1,
+      }));
+    } else if (action === RESET) {
+      this.setState(({ destinationsCompleted }) => {
+        let newDestinationsCompleted = [...destinationsCompleted];
+        if (!destinationsCompleted.includes(params.resultAchieved)) {
+          newDestinationsCompleted.push(params.resultAchieved);
+        }
+        return {
+          level: 0,
+          winningResult: 0,
+          result: [0, 0, 0, 0, 0],
+          destinationsCompleted: newDestinationsCompleted,
+        };
+      });
+    }
+  };
+
+  // Render layout of question
+
+  render() {
+    const sharedProps = {
+      setGameState: this.setGameState,
+      gameState: this.state,
     };
 
-    // Render layout of question
+    let gameContent = <Level {...sharedProps} />;
+    let quiz = <Layout gameContent={gameContent} {...sharedProps} />;
 
-    render() {
-        let gameContent = (
-            <Level setGameState={this.setGameState} gameState={this.state} />
-        );
-
-        let quiz = <Layout gameContent={gameContent} gameState={this.state} />;
-
-        // Return quiz
-        return quiz;
-    }
+    // Return quiz
+    return quiz;
+  }
 }

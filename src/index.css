@@ -10,9 +10,10 @@ body {
 article, aside, footer, header, nav, section {
     display: block;
 }
+
 h1 {
     font-size: 2em;
-    margin: .67em 0;
+    margin: 20px 0;
 }
 figcaption, figure, main {
     display: block;
@@ -168,9 +169,22 @@ template {
 body {
     overflow: hidden;
 }
-.background-start {
+
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-screen {
     font-size: 25px;
-    background-image: linear-gradient(45deg, #878CA6, #6298FE);
+    padding-bottom: 100px;
+    /* background-image: linear-gradient(45deg, #878CA6, #6298FE); */
 }
 
 input[type='button'] {
@@ -208,7 +222,11 @@ input[type='button']:active {
 }
 
 .main {
+    width: 100vw;
+    height: 100vh;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
 
@@ -236,6 +254,7 @@ input[type='button']:active {
     color: white;
     background-color: rgba(128, 128, 128, 0.5);
     padding: 20px;
+    text-align: left;
     border-radius: 20px;
 }
 
@@ -243,16 +262,16 @@ input[type='button']:active {
     position: relative;
     font-family: 'Pacifico', cursive;
     font-size: 210px;
-    height: 400px;
+    /* height: 400px; */
     background: -webkit-linear-gradient(#ffff80, #66ffcc, #0088ee);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 20px -10px 0px #ffff80;
+    text-shadow: 12px -5px 0px #ffff80;
     transition: all .2s ease-in-out;
     -webkit-z-index: 100;
     z-index: 100;
-    wrap: no-wrap;
+    word-wrap: no-wrap;
     cursor: pointer;
 }
 
@@ -275,13 +294,14 @@ input[type='button']:active {
 
 .start-subtext {
     font-size: 80px;
-    position: fixed;
-    top: 55vh;
-    left: 32vw;
+    /* position: fixed; */
+    /* top: 55vh; */
+    /* left: 32vw; */
     color: #ffaa72;
     font-family: 'Pacifico';
     z-index: 200;
-    text-align: right;
+    margin-bottom: 50px;
+    /* text-align: right; */
 }
 
 .text {
@@ -307,6 +327,44 @@ input[type='button']:active {
     z-index: 0;
 }
 
+.button {
+  border: 5px solid white;
+  color: white;
+  font-family: "Dosis";
+  font-weight: normal;
+  background-color: rgba(128, 128, 128, 0.5);
+  border-radius: 15px;
+  /* width: 150px; */
+  box-shadow: 0px 5px #ffffff;
+  padding: 3px 5px 5px 5px;
+}
+
+.button:hover {
+  position: relative;
+  top: 1px;
+  box-shadow: 0px 4px #ffffff;
+  cursor: pointer;
+}
+
+.button:active {
+  position: relative;
+  top: 3px;
+  box-shadow: 0px 2px #ffffff;
+  cursor: pointer;
+}
+
+.cool-mode {
+  /* border: 5px solid white;
+  color: white;
+  font-family: "Dosis";
+  font-weight: normal;
+  background-color: rgba(128, 128, 128, 0.5);
+  border-radius: 15px; */
+  width: 150px;
+  /* box-shadow: 0px 5px #ffffff;
+  padding: 3px 5px 5px 5px; */
+}
+
 @keyframes moveAcross {
     0% {
     }
@@ -322,4 +380,7 @@ input[type='button']:active {
     float: center;
     font-family: "Dosis";
     font-size: 50px;
+    text-align: left;
+    padding-left: 100px;
+    padding-right: 100px;
 }

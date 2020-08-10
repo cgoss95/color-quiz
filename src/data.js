@@ -47,7 +47,7 @@ export default [
             },
             {
                 // Choice five
-                answer: "I don't like fruit. It scares me.",
+                answer: "\"I don't like fruit. It scares me.\"",
                 result: RESULT_BLACK,
                 add: 1
             }
@@ -67,7 +67,7 @@ export default [
             },
             {
                 // Choice two
-                answer: "Karen",
+                answer: "Denise",
                 result: 0,
                 add: 0
             },
@@ -105,7 +105,7 @@ export default [
             },
             {
                 // Choice four
-                answer: "Eh",
+                answer: "Amiss",
                 result: RESULT_GREEN,
                 add: 1
             },

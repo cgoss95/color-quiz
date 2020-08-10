@@ -13,3 +13,4 @@ export const RESULT_BLUE = 1;
 export const RESULT_YELLOW = 2;
 export const RESULT_GREEN = 3;
 export const RESULT_BLACK = 4;
+export const RESET = 'reset';
