@@ -4,9 +4,7 @@ import { RESULT_RED, RESULT_BLUE, RESULT_YELLOW, RESULT_GREEN, RESULT_BLACK, RES
 export default class Results extends React.Component {
   render() {
     let { winningResult } = this.props.gameState;
-    // let resultText = <div></div>;
     let resultText = null;
-    // winningResult === RESULT_YELLOW;
     // Various results
     if (winningResult === RESULT_RED) {
       resultText = (
@@ -24,10 +22,10 @@ export default class Results extends React.Component {
       );
     } else if (winningResult === RESULT_YELLOW) {
       resultText = (
-        <div>
-          <h1 style={{ margin: '0', marginBottom: 0 }}>You are the color YELLOW.</h1>
-          <p style={{ margin: '0'}}>This is a pretty good indication you're a Gryffindor. I'm a Hufflepuff and I <span style={{ textDecoration: 'underline'}}>strongly dislike</span> Gryffindors. Navigate to your browser's corresponding ❌ button to get your big hiney OUT of here!!*</p>
-          <div style={{ fontSize: '20px', margin: '10px', fontFamily: 'monospace' }}>*This result card brought to you by the "Huff'N'Puff HP Potterhead Potheads"** group on Facebook so look us up. We're accepting applications for new mods. keep it 💯!!</div>
+        <div className="result-yellow">
+          <h1>You are the color YELLOW.</h1>
+          <p>This is a pretty good indication you're a Gryffindor. I'm a Hufflepuff and <span className="underline">I strongly dislike</span> Gryffindors. Navigate to your browser's corresponding ❌ button to get your big hiney OUT of here!!*</p>
+          <div className="results-subtext-1">*This result brought to you by the "Huff'N'Puff HP Potterhead Potheads"** group on Facebook so look us up. We're accepting applications for new mods. keep it 💯!!</div>
         </div>
       );
     } else if (winningResult === RESULT_GREEN) {
@@ -42,7 +40,7 @@ export default class Results extends React.Component {
       );
     } else if (winningResult === RESULT_BLACK) {
       resultText = (
-        <div className="result-4">
+        <div>
           <h1>You are the color BLACK.</h1>
           <p>Black. You're a contrarian: Edgy and disagreeable. You have encountered many life complications due to your personality defects.</p>
         </div>
@@ -50,13 +48,13 @@ export default class Results extends React.Component {
     }
 
     return (
-      <div>
+      <>
         {resultText}
-        <div className="button" style={{ width: 'fit-content', padding: '5px 15px 15px 15px', marginTop: '15px'}} onClick={() => this.props.setGameState(RESET, { resultAchieved: winningResult })}>Try again?</div>
+        <div className="button try-again" onClick={() => this.props.setGameState(RESET, { resultAchieved: winningResult })}>Try again?</div>
         {winningResult === RESULT_YELLOW && (
-          <div style={{ fontSize: '15px', marginTop: '25px' }}>(**not an actual facebook group)</div>
+          <div className="results-subtext-2">(**not an actual facebook group)</div>
         )}
-      </div>
+      </>
     );
   }
 }

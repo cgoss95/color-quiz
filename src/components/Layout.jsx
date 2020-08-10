@@ -103,16 +103,24 @@ export default class Layout extends React.Component {
     const { gameContent } = this.props;
     return (
       <div className="main" style={screenBackground(level, winningResult)} align="center">
+        <div className="homepage-link">
+          <a href="http://ceci.dev/">
+            <div className="button">ceci.dev</div>
+          </a>
+        </div>
         {level === 0 && (
           <>
             <FlyingStars isRandomized={isEmojiMode} />
             <div className="start-screen">
-              <div className="start" onClick={this.onEventHandler}>
-                <div className="start-the">The</div> Color Quiz
+              <div className="start-header" onClick={this.onEventHandler}>
+                <div className="start-the">The</div>
+                <div className="start-color-quiz"> Color Quiz</div>
               </div>
-              <div className="start-subtext">A colorful journey... {5 - destinationsCompleted.length} destinations</div>
+              <div className="start-subtext">A colorful journey... <span class="underline">{5 - destinationsCompleted.length}</span> destinations</div>
               <div className="corner-text">Click title to start!</div>
-              <div className="cool-mode button" onClick={() => this.setState({ isEmojiMode: true })}>emoji mode</div>
+              <div className="cool-mode button" onClick={() => this.setState({ isEmojiMode: true })}>
+                emoji mode
+              </div>
             </div>
           </>
         )}

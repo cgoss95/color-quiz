@@ -258,11 +258,10 @@ input[type='button']:active {
     border-radius: 20px;
 }
 
-.start {
+.start-header {
     position: relative;
     font-family: 'Pacifico', cursive;
     font-size: 210px;
-    /* height: 400px; */
     background: -webkit-linear-gradient(#ffff80, #66ffcc, #0088ee);
     -webkit-background-clip: text;
     background-clip: text;
@@ -275,7 +274,7 @@ input[type='button']:active {
     cursor: pointer;
 }
 
-.start:hover {
+.start-header:hover {
     transform: scale(1.1);
 }
 
@@ -337,6 +336,7 @@ input[type='button']:active {
   /* width: 150px; */
   box-shadow: 0px 5px #ffffff;
   padding: 3px 5px 5px 5px;
+  width: fit-content;
 }
 
 .button:hover {
@@ -354,15 +354,114 @@ input[type='button']:active {
 }
 
 .cool-mode {
-  /* border: 5px solid white;
-  color: white;
-  font-family: "Dosis";
-  font-weight: normal;
-  background-color: rgba(128, 128, 128, 0.5);
-  border-radius: 15px; */
   width: 150px;
-  /* box-shadow: 0px 5px #ffffff;
-  padding: 3px 5px 5px 5px; */
+}
+
+.homepage-link {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  text-align: right;
+}
+
+.homepage-link .button {
+  padding: 5px 10px 10px 10px;
+}
+
+.homepage-link a {
+  text-decoration: none;
+  color: white;
+}
+
+.button.try-again {
+  width: fit-content;
+  padding: '5px 15px 15px 15px';
+  margin-top: 15px;
+}
+
+.results {
+  float: center;
+  font-family: "Dosis";
+  font-size: 50px;
+  text-align: left;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.results .results-subtext-1 {
+  font-size: 20px;
+  /* margin: 10px; */
+  font-family: monospace;
+}
+
+.results .results-subtext-2 {
+  font-size: 15px;
+  margin-top: 25px;
+}
+
+.result-yellow h1, .result-yellow p {
+  margin: 0;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+@media only screen and (min-device-width : 360px) and (max-device-width : 768px) {
+  h1 {
+    font-size: 1em;
+
+  }
+  .homepage-link {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+  }
+
+  .start-screen {
+    /* transform: scale(0.75); */
+  }
+
+  .start-the {
+    left: -75px;
+    top: -20px;
+    font-size: 60px;
+  }
+
+  .start-header {
+    font-size: 120px;
+    text-shadow: 6px -3px 0px #ffff80;
+  }
+
+  .start-subtext {
+    font-size: 40px;
+  }
+
+  .main {
+    padding: 30px;
+  }
+
+  .results {
+    padding: 0;
+  }
+
+  .results p {
+    font-size: 30px;
+  }
+
+  .results .results-subtext-1 {
+    margin: 10px 0;
+  }
+
+  .question-answers {
+    font-size: 40px;
+  }
+
+  .results .button.try-again {
+    font-size: 36px !important;
+    padding: 3px 11px 11px 11px;
+  }
 }
 
 @keyframes moveAcross {
@@ -374,13 +473,4 @@ input[type='button']:active {
             rotate(3600deg);
         transform: translateX(3500px) translateY(3500px) rotate(3600deg);
     }
-}
-
-.results {
-    float: center;
-    font-family: "Dosis";
-    font-size: 50px;
-    text-align: left;
-    padding-left: 100px;
-    padding-right: 100px;
 }
