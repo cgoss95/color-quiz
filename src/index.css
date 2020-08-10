@@ -166,10 +166,6 @@ template {
     display: none;
 } /*# sourceMappingURL=normalize.min.css.map */
 
-body {
-    overflow: hidden;
-}
-
 
 #root {
   height: 100vh;
@@ -223,7 +219,7 @@ input[type='button']:active {
 
 .main {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -375,8 +371,9 @@ input[type='button']:active {
 
 .button.try-again {
   width: fit-content;
-  padding: '5px 15px 15px 15px';
-  margin-top: 15px;
+  font-size: 40px;
+  padding: 0 15px 15px 15px;
+  margin-top: 40px;
 }
 
 .results {
@@ -395,19 +392,19 @@ input[type='button']:active {
 }
 
 .results .results-subtext-2 {
-  font-size: 15px;
+  font-size: 18px;
   margin-top: 25px;
 }
 
 .result-yellow h1, .result-yellow p {
-  margin: 0;
+  margin: 30px 0;
 }
 
 .underline {
   text-decoration: underline;
 }
 
-@media only screen and (min-device-width : 360px) and (max-device-width : 768px) {
+@media only screen and (max-device-width : 768px) {
   h1 {
     font-size: 1em;
 
@@ -451,7 +448,7 @@ input[type='button']:active {
   }
 
   .results .results-subtext-1 {
-    margin: 10px 0;
+    margin: 30px 0;
   }
 
   .question-answers {
