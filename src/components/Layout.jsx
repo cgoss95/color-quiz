@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DATA from '../data';
 import { START, QUESTION_TYPE_MULTIPLE, QUESTION_TYPE_TEXTFIELD, RESULTS, SET_LEVEL, SET_RESULTS, SET_NAME, RESET } from '../constants';
 
@@ -72,6 +72,43 @@ const screenBackground = (level, winningResult) => {
   }
   return randomLinearGradientBackground();
 };
+
+
+const Layout = ({ level, winningResult, destinationsCompleted, gameContent }) => {
+  const emojiModeEnabled = useState(false);
+
+  const eventHandler = (e) => {
+
+  }
+
+  return (
+    <div className="main" style={screenBackground(level, winningResult)} align="center">
+      <div className="homepage-link">
+        <a href="http://ceci.dev/">
+          <div className="button">ceci.dev</div>
+        </a>
+      </div>
+      {level === 0 && (
+        <>
+          <FlyingStars isRandomized={isEmojiMode} />
+          <div className="start-screen">
+            <div className="start-header" onClick={this.onEventHandler}>
+              <div className="start-the">The</div>
+              <div className="start-color-quiz"> Color Quiz</div>
+            </div>
+            <div className="start-subtext">A colorful journey... <span class="underline">{5 - destinationsCompleted.length}</span> destinations</div>
+            <div className="corner-text">Click title to start!</div>
+            <div className="cool-mode button" onClick={() => this.setState({ isEmojiMode: true })}>
+              emoji mode
+            </div>
+          </div>
+        </>
+      )}
+      {level === DATA.length - 1 && <div style={getResultCardsStyle(winningResult)}>{gameContent}</div>}
+      {level > 0 && level < DATA.length - 1 && <div>{gameContent}</div>}
+    </div>
+  );
+}
 
 export default class Layout extends React.Component {
   constructor(props) {
