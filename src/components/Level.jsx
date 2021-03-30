@@ -56,33 +56,33 @@ export default class Level extends React.Component {
   // };
 
   // Render a text field to the page
-  renderTextfield = (text) => {
-    const { textfieldValue } = this.state;
-    return (
-      <div>
-        {text}
-        <br />
-        <input
-          value={textfieldValue}
-          onChange={(e) => {
-            this.setState({
-              textfieldValue: e.target.value,
-            });
-          }}
-        />
-        <button
-          onClick={() => {
-            this.props.setGameState(SET_NAME, {
-              name: textfieldValue,
-            });
-            this.props.setGameState(SET_LEVEL);
-          }}
-        >
-          Submit
-        </button>
-      </div>
-    );
-  };
+  // renderTextfield = (text) => {
+  //   const { textfieldValue } = this.state;
+  //   return (
+  //     <div>
+  //       {text}
+  //       <br />
+  //       <input
+  //         value={textfieldValue}
+  //         onChange={(e) => {
+  //           this.setState({
+  //             textfieldValue: e.target.value,
+  //           });
+  //         }}
+  //       />
+  //       <button
+  //         onClick={() => {
+  //           this.props.setGameState(SET_NAME, {
+  //             name: textfieldValue,
+  //           });
+  //           this.props.setGameState(SET_LEVEL);
+  //         }}
+  //       >
+  //         Submit
+  //       </button>
+  //     </div>
+  //   );
+  // };
 
   // Render the results of a page
   // renderResults = () => {
@@ -90,34 +90,34 @@ export default class Level extends React.Component {
   // };
 
   // Render entire level
-  render() {
-    const { level } = this.props.gameState;
-    // Build level
-    switch (DATA[level].type) {
-      case START:
-        return (
-          <div className="start" onClick={this.onEventHandler}>
-            <div className="start-the">The</div> Color Quiz
-          </div>
-        );
-      case RESULTS:
-        return (
-          <div className="results">
-            <Results gameState={this.props.gameState} setGameState={this.props.setGameState} />
-          </div>
-        );
-      case QUESTION_TYPE_MULTIPLE:
-        // Render multiple-choice question
-        return (
-          <div className="question-answers">
-            <div className="question">{this.renderQuestion()}</div>
-            <div className="answers">{this.renderAnswers()}</div>
-          </div>
-        );
-      case QUESTION_TYPE_TEXTFIELD:
-        return <div>{this.renderTextfield()}</div>;
-      default:
-        break;
-    }
-  }
+  // render() {
+  //   const { level } = this.props.gameState;
+  //   // Build level
+  //   switch (DATA[level].type) {
+  //     case START:
+  //       return (
+  //         <div className="start" onClick={this.onEventHandler}>
+  //           <div className="start-the">The</div> Color Quiz
+  //         </div>
+  //       );
+  //     case RESULTS:
+  //       return (
+  //         <div className="results">
+  //           <Results gameState={this.props.gameState} setGameState={this.props.setGameState} />
+  //         </div>
+  //       );
+  //     case QUESTION_TYPE_MULTIPLE:
+  //       // Render multiple-choice question
+  //       return (
+  //         <div className="question-answers">
+  //           <div className="question">{this.renderQuestion()}</div>
+  //           <div className="answers">{this.renderAnswers()}</div>
+  //         </div>
+  //       );
+  //     case QUESTION_TYPE_TEXTFIELD:
+  //       return <div>{this.renderTextfield()}</div>;
+  //     default:
+  //       break;
+  //   }
+  // }
 }
