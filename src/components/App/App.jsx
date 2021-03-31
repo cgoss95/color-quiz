@@ -68,6 +68,7 @@ const App = () => {
   }
 
   const resetGame = () => {
+    console.log('resetting')
     markAchievement();
     setName(initState.name);
     setTally(initState.tally);
@@ -79,7 +80,7 @@ const App = () => {
   const ResultPage = () => (
     <div style={resultPageStyle[getResult()]}>
       <div className="results">
-        <Results result={getResult()} setGameState={() => console.log('set game state')} />
+        <Results result={getResult()} reset={resetGame} />
       </div>
     </div>
   );
