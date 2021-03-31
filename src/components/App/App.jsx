@@ -1,13 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import '../../index.css';
-import { randGradientBg, screenBg, resultPageStyle, FlyingStars } from '../../style-functions.js';
-import HomepageLink from '../HomepageLink';
-import DATA from '../../data';
-import Results from '../Results';
-import { START, QUESTION_TYPE_MULTIPLE, QUESTION_TYPE_TEXTFIELD, RESULTS, SET_LEVEL, SET_RESULTS, SET_NAME, RESET } from '../../constants';
+import React, { useState, useEffect } from "react";
+import "../../index.css";
+import {
+  randGradientBg,
+  screenBg,
+  resultPageStyle,
+  FlyingStars,
+} from "../../style-functions.js";
+import HomepageLink from "../HomepageLink";
+import DATA from "../../data";
+import ResultsPage from "../Pages/ResultsPage";
+import QuestionPage from '../Pages/QuestionPage'
+import Results from "../Results";
+import {
+  START,
+  QUESTION_TYPE_MULTIPLE,
+  QUESTION_TYPE_TEXTFIELD,
+  RESULTS,
+  SET_LEVEL,
+  SET_RESULTS,
+  SET_NAME,
+  RESET,
+} from "../../constants";
 
 const initState = {
-  name: '',
+  name: "",
   tally: [0, 0, 0, 0, 0],
   level: 0,
   emojiMode: false,
@@ -47,64 +63,32 @@ const App = () => {
 
   const markAchievement = () => {
     let resultsAchieved = [];
-    if (localStorage.getItem('resultsAchieved')) {
-      resultsAchieved = JSON.parse(localStorage.getItem('resultsAchieved'));
+    if (localStorage.getItem("resultsAchieved")) {
+      resultsAchieved = JSON.parse(localStorage.getItem("resultsAchieved"));
     }
     resultsAchieved.push(getResult());
-    localStorage.setItem('resultsAchieved', JSON.stringify(resultsAchieved));
+    localStorage.setItem("resultsAchieved", JSON.stringify(resultsAchieved));
   };
 
   const getAchievementCount = () => {
     let resultsAchieved = [];
-    if (localStorage.getItem('resultsAchieved')) {
-      resultsAchieved = JSON.parse(localStorage.getItem('resultsAchieved'));
+    if (localStorage.getItem("resultsAchieved")) {
+      resultsAchieved = JSON.parse(localStorage.getItem("resultsAchieved"));
     }
     return resultsAchieved.length;
   };
 
-  const selectAnswer = (choice) => {
-    incrScore(choice.result, choice.add);
+  const selectAnswer = (selectedResult, pointsToAdd) => {
+    incrScore(selectedResult, pointsToAdd);
     incrLevel();
-  }
+  };
 
   const resetGame = () => {
-    console.log('resetting')
+    console.log("resetting");
     markAchievement();
     setName(initState.name);
     setTally(initState.tally);
     setLevel(initState.level);
-  };
-
-  // let gameContent = <Level />;
-
-  const ResultPage = () => (
-    <div style={resultPageStyle[getResult()]}>
-      <div className="results">
-        <Results result={getResult()} reset={resetGame} />
-      </div>
-    </div>
-  );
-
-  const QPage = () => {
-    // Render question to page
-    const renderQuestion = () => DATA[level].question;
-    const renderAnswers = () => {
-      return DATA[level].choices.map((c) => (
-        <div>
-          <input type="button" onClick={() => selectAnswer(c)} value={c} />
-          <label>{' ' + c.answer}</label>
-        </div>
-      ));
-    };
-
-    return (
-      <div>
-        <div className="question-answers">
-          <div className="question">{renderQuestion()}</div>
-          <div className="answers">{renderAnswers()}</div>
-        </div>
-      </div>
-    );
   };
 
   const TitlePage = () => {
@@ -117,7 +101,9 @@ const App = () => {
             <div className="start-color-quiz"> Color Quiz</div>
           </div>
           <div className="start-subtext">
-            A colorful journey... <span class="underline">{5 - getAchievementCount()}</span> destinations
+            A colorful journey...{" "}
+            <span class="underline">{5 - getAchievementCount()}</span>{" "}
+            destinations
           </div>
           <div className="corner-text">Click title to start!</div>
           <div className="cool-mode button" onClick={toggleEmojiMode}>
@@ -129,17 +115,22 @@ const App = () => {
   };
 
   const isTitlePage = level === 0;
-  const isQPage = level > 0 && level < DATA.length - 1;
+  const isQuestionPage = level > 0 && level < DATA.length - 1;
   const isResultPage = level === DATA.length - 1;
-
 
   return (
     <div className="main">
-      {isTitlePage ? <TitlePage emojiModeHandler={() => console.log('emoji mode')} /> : null}
-      {isQPage ? <QPage /> : null}
+      {isTitlePage ? (
+        <TitlePage
+          resultsLeft={5 - getAchievementCount()}
+          onStartGame={incrLevel}
+          onToggleEmojiMode={toggleEmojiMode}
+        />
+      ) : null}
+      {isQuestionPage ? <QuestionPage onSelectAnswer={selectAnswer} /> : null}
       {isResultPage ? <ResultPage /> : null}
     </div>
-    );
+  );
 };
 
 export default App;

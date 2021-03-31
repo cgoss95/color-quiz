@@ -1,6 +1,7 @@
 import React from 'react';
 import { RESULT_RED, RESULT_BLUE, RESULT_YELLOW, RESULT_GREEN, RESULT_BLACK, RESET } from '../constants';
 import { Red, Blue, Yellow, Green, Black } from './result-pages';
+import { resultPageStyle } from '../style-functions';
 
 const Result = ({ result }) => {
   switch (result) {
@@ -11,7 +12,7 @@ const Result = ({ result }) => {
       return <Blue />;
 
     case RESULT_YELLOW:
-      return <Blue />;
+      return <Yellow />;
 
     case RESULT_GREEN:
       return <Green />;
@@ -24,12 +25,14 @@ const Result = ({ result }) => {
   }
 };
 
-const ResultsPage = ({ result }) => {
+const ResultsPage = ({ result, reset }) => {
   return (
-    <div class="results-page">
-      <Result result={result} />
-      <div className="button try-again" onClick={() => reset()}>
-        Try again?
+    <div className="results" style={resultPageStyle[result]}>
+      <div class="results-page">
+        <Result result={result} />
+        <div className="button try-again" onClick={() => reset()}>
+          Try again?
+        </div>
       </div>
     </div>
   );
