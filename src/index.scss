@@ -1,5 +1,17 @@
+$dreamscicle: #ffaa72;
+
 :root {
   font-size: 25px;
+}
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  overflow: auto;
+  height: 100%;
 }
 
 #root {
@@ -23,7 +35,7 @@
 
 .title-page {
   /* padding-bottom: 100px; */
-  background: linear-gradient(45deg, #878CA6, #6298FE);
+  background: linear-gradient(45deg, #878ca6, #6298fe);
   background-color: blue;
   /* background */
   display: flex;
@@ -34,40 +46,6 @@
   text-align: center;
 }
 
-input[type='button'],
-button {
-  outline: none;
-  color: transparent;
-  width: 50px;
-  height: 50px;
-  top: 5px;
-  left: -1px;
-  content: '';
-  position: relative;
-  background-color: white;
-  display: inline-block;
-  visibility: visible;
-  margin: 2px;
-  border: none;
-  border-radius: 50px;
-}
-
-input[type='button']:active,
-button:active {
-  outline: none;
-  color: transparent;
-  width: 50px;
-  height: 50px;
-  /* top: 5px; */
-  /* left: -1px; */
-  position: relative;
-  background-color: lightcoral;
-  display: inline-block;
-  visibility: visible;
-  margin: 2px;
-  border: none;
-  border-radius: 50px;
-}
 
 .app {
   width: 100%;
@@ -106,52 +84,43 @@ button:active {
   border-radius: 20px;
 }
 
-.title-header {
-  position: relative;
-  font-family: 'Pacifico', cursive;
-  font-size: 210px;
-  text-shadow: 12px -5px 0px #ffff80;
-  background: linear-gradient(#ffff80, #66ffcc, #0088ee);
-  background-clip: text;
+.title-page {
+  .title-header {
+    position: relative;
+    padding: 4vw 0;
+    // font
+    font-family: 'Pacifico', cursive;
+    font-size: 15vw;
+    text-shadow: 0.5vw -0.5vw 0 #ffff80;
+    background: linear-gradient(#ffff80, #66ffcc, #0088ee);
     -webkit-background-clip: text;
-  text-fill-color: transparent;
     -webkit-text-fill-color: transparent;
-  z-index: 100;
-    -webkit-z-index: 100;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
 
+    &:hover {
+      transform: scale(1.1);
+    }
 
-  transition: all 0.2s ease-in-out;
-  word-wrap: no-wrap;
-  cursor: pointer;
-}
+    .the {
+      display: block;
+      position: absolute;
+      background: $dreamscicle;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+  }
 
-.title-header:hover {
-  transform: scale(1.1);
-}
-
-.title-header .header-the {
-  font-size: 120px;
-  position: absolute;
-  top: 0px;
-  left: 50px;
-  width: 400px;
-  background: #ffaa72;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: none;
-}
-
-.title-subtext {
-  font-size: 80px;
-  /* position: fixed; */
-  /* top: 55vh; */
-  /* left: 32vw; */
-  color: #ffaa72;
-  font-family: 'Pacifico';
-  z-index: 200;
-  margin-bottom: 50px;
-  /* text-align: right; */
+  .title-subtext {
+    font-size: 5vw;
+    color: $dreamscicle;
+    font-family: 'Pacifico';
+    z-index: 200;
+    margin-bottom: 50px;
+  }
 }
 
 .text {
@@ -209,10 +178,23 @@ button:active {
 }
 
 .homepage-link {
+  $width: 4rem;
   position: fixed;
-  top: 20px;
-  right: 20px;
-  text-align: right;
+  width: $width;
+  top: 0;
+  right: $width;
+  margin-top: 1rem;
+  margin-right: 1rem;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .button {
+    padding: 10px;
+    padding-top: 5px;
+  }
 }
 
 .homepage-link .button {
@@ -275,21 +257,6 @@ button:active {
 
   .start-screen {
     /* transform: scale(0.75); */
-  }
-
-  .title-header .header-the {
-    left: -75px;
-    top: -20px;
-    font-size: 60px;
-  }
-
-  .title-header {
-    font-size: 120px;
-    text-shadow: 6px -3px 0px #ffff80;
-  }
-
-  .title-subtext {
-    font-size: 40px;
   }
 
   .app {
