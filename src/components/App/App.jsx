@@ -8,19 +8,9 @@ import {
 } from "../../style-functions.js";
 import HomepageLink from "../HomepageLink";
 import DATA from "../../data";
+import QuestionPage from "../Pages/QuestionPage";
 import ResultsPage from "../Pages/ResultsPage";
-import QuestionPage from '../Pages/QuestionPage'
-import Results from "../Results";
-import {
-  START,
-  QUESTION_TYPE_MULTIPLE,
-  QUESTION_TYPE_TEXTFIELD,
-  RESULTS,
-  SET_LEVEL,
-  SET_RESULTS,
-  SET_NAME,
-  RESET,
-} from "../../constants";
+import TitlePage from "../Pages/TitlePage";
 
 const initState = {
   name: "",
@@ -49,11 +39,10 @@ const App = () => {
   };
 
   const toggleEmojiMode = () => setEmojiMode(!emojiMode);
-  const incrLevel = () => setLevel(level + 1);
-  const incrScore = (i, pToAdd) => {
-    // i === quiz result index to add to
-    // pToAdd === points to add
 
+  const incrLevel = () => setLevel(level + 1);
+
+  const incrScore = (i, pToAdd) => {
     setTally((oldTally) => {
       const newTally = [...oldTally];
       newTally[i] = oldTally[i] + pToAdd;
@@ -91,44 +80,22 @@ const App = () => {
     setLevel(initState.level);
   };
 
-  const TitlePage = () => {
-    return (
-      <>
-        {/* <FlyingStars isRandomized={emojiMode} /> */}
-        <div className="start-screen">
-          <div className="start-header" onClick={() => incrLevel()}>
-            <div className="start-the">The</div>
-            <div className="start-color-quiz"> Color Quiz</div>
-          </div>
-          <div className="start-subtext">
-            A colorful journey...{" "}
-            <span class="underline">{5 - getAchievementCount()}</span>{" "}
-            destinations
-          </div>
-          <div className="corner-text">Click title to start!</div>
-          <div className="cool-mode button" onClick={toggleEmojiMode}>
-            emoji mode
-          </div>
-        </div>
-      </>
-    );
-  };
-
   const isTitlePage = level === 0;
   const isQuestionPage = level > 0 && level < DATA.length - 1;
   const isResultPage = level === DATA.length - 1;
 
   return (
     <div className="main">
+      <HomepageLink />
       {isTitlePage ? (
         <TitlePage
-          resultsLeft={5 - getAchievementCount()}
           onStartGame={incrLevel}
           onToggleEmojiMode={toggleEmojiMode}
+          resultsLeft={5 - getAchievementCount()}
         />
       ) : null}
-      {isQuestionPage ? <QuestionPage onSelectAnswer={selectAnswer} /> : null}
-      {isResultPage ? <ResultPage /> : null}
+      {isQuestionPage ? <QuestionPage onSelectAnswer={selectAnswer} level={level} /> : null}
+      {isResultPage ? <ResultsPage onReset={resetGame} result={getResult()} /> : null}
     </div>
   );
 };

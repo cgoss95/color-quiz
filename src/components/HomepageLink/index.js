@@ -1,3 +1,3 @@
 import HomepageLink from './HomepageLink.jsx';
-import './HomepageLink.scss';
+import './HomepageLink.css';
 export default HomepageLink;

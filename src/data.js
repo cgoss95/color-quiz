@@ -9,7 +9,7 @@ import {
     RESULTS
 } from "./constants";
 
-export default [
+const DATA = [
     {
         // START
         name: "start",
@@ -161,3 +161,6 @@ export default [
         type: RESULTS
     }
 ];
+
+
+export default DATA;

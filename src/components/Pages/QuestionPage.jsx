@@ -1,13 +1,13 @@
+
 import React from "react";
 import DATA from "../../data";
 
-const QuestionPage = ({ onSelectAnswer }) => {
+const QuestionPage = ({ onSelectAnswer, level }) => {
   const question = DATA[level].question;
   const choices = DATA[level].choices;
 
   return (
-    <div>
-      <div className="question-answers">
+      <div className="question-page page">
         <div className="question">{ question }</div>
         <div className="answers">
           {choices.map((c) => (
@@ -17,7 +17,6 @@ const QuestionPage = ({ onSelectAnswer }) => {
             </div>
           ))}
         </div>
-      </div>
     </div>
   );
 };
