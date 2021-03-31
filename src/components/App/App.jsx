@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
-import "../../index.css";
+import React, { useState, useEffect } from 'react';
 import {
   randGradientBg,
   screenBg,
   resultPageStyle,
   FlyingStars,
-} from "../../style-functions.js";
-import HomepageLink from "../HomepageLink";
-import DATA from "../../data";
-import QuestionPage from "../Pages/QuestionPage";
-import ResultsPage from "../Pages/ResultsPage";
-import TitlePage from "../Pages/TitlePage";
+} from '../../style-functions.js';
+import HomepageLink from '../HomepageLink';
+import DATA from '../../data';
+import QuestionPage from '../Pages/QuestionPage';
+import ResultsPage from '../Pages/ResultsPage';
+import TitlePage from '../Pages/TitlePage';
 
 const initState = {
-  name: "",
+  name: '',
   tally: [0, 0, 0, 0, 0],
   level: 0,
   emojiMode: false,
@@ -52,17 +51,20 @@ const App = () => {
 
   const markAchievement = () => {
     let resultsAchieved = [];
-    if (localStorage.getItem("resultsAchieved")) {
-      resultsAchieved = JSON.parse(localStorage.getItem("resultsAchieved"));
+    if (localStorage.getItem('resultsAchieved')) {
+      resultsAchieved = JSON.parse(localStorage.getItem('resultsAchieved'));
     }
-    resultsAchieved.push(getResult());
-    localStorage.setItem("resultsAchieved", JSON.stringify(resultsAchieved));
+    const result = getResult();
+    if (!resultsAchieved.includes(result)) {
+      resultsAchieved.push(result);
+    }
+    localStorage.setItem('resultsAchieved', JSON.stringify(resultsAchieved));
   };
 
   const getAchievementCount = () => {
     let resultsAchieved = [];
-    if (localStorage.getItem("resultsAchieved")) {
-      resultsAchieved = JSON.parse(localStorage.getItem("resultsAchieved"));
+    if (localStorage.getItem('resultsAchieved')) {
+      resultsAchieved = JSON.parse(localStorage.getItem('resultsAchieved'));
     }
     return resultsAchieved.length;
   };
@@ -73,7 +75,7 @@ const App = () => {
   };
 
   const resetGame = () => {
-    console.log("resetting");
+    console.log('resetting');
     markAchievement();
     setName(initState.name);
     setTally(initState.tally);
@@ -85,7 +87,7 @@ const App = () => {
   const isResultPage = level === DATA.length - 1;
 
   return (
-    <div className="main">
+    <div className="app">
       <HomepageLink />
       {isTitlePage ? (
         <TitlePage
@@ -94,8 +96,12 @@ const App = () => {
           resultsLeft={5 - getAchievementCount()}
         />
       ) : null}
-      {isQuestionPage ? <QuestionPage onSelectAnswer={selectAnswer} level={level} /> : null}
-      {isResultPage ? <ResultsPage onReset={resetGame} result={getResult()} /> : null}
+      {isQuestionPage ? (
+        <QuestionPage onSelectAnswer={selectAnswer} level={level} />
+      ) : null}
+      {isResultPage ? (
+        <ResultsPage onReset={resetGame} result={getResult()} />
+      ) : null}
     </div>
   );
 };

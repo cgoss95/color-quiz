@@ -4,11 +4,11 @@ const TitlePage = ({ resultsLeft, onStartGame, onToggleEmojiMode }) => {
   return (
     <div className="title-page page">
       {/* <FlyingStars isRandomized={emojiMode} /> */}
-      <div className="start-header" onClick={onStartGame}>
-        <div className="start-the">The</div>
-        <div className="start-color-quiz"> Color Quiz</div>
+      <div className="title-header" onClick={onStartGame}>
+        <div className="header-the">The</div>
+        <div className="header-color-quiz"> Color Quiz</div>
       </div>
-      <div className="start-subtext">
+      <div className="title-subtext">
         A colorful journey...{" "}
         <span class="underline">{resultsLeft}</span> destinations
       </div>
