@@ -3,24 +3,24 @@ import { RESULT_RED, RESULT_BLUE, RESULT_YELLOW, RESULT_GREEN, RESULT_BLACK, RES
 
 export default class Results extends React.Component {
   render() {
-    let { winningResult } = this.props.gameState;
+    let { result } = this.props;
     let resultText = null;
     // Various results
-    if (winningResult === RESULT_RED) {
+    if (result === RESULT_RED) {
       resultText = (
         <div>
           <h1>You're red!</h1>
           <p>Good job! This is a good color.</p>
         </div>
       );
-    } else if (winningResult === RESULT_BLUE) {
+    } else if (result === RESULT_BLUE) {
       resultText = (
         <div>
           <h1>You are the color BLUE.</h1>
           <p>Haha! Thought you were going to get red, didn't you? You're probably not the type to expect the unexpected. Sad!</p>
         </div>
       );
-    } else if (winningResult === RESULT_YELLOW) {
+    } else if (result === RESULT_YELLOW) {
       resultText = (
         <div className="result-yellow">
           <h1>You are the color YELLOW.</h1>
@@ -28,7 +28,7 @@ export default class Results extends React.Component {
           <div className="results-subtext-1">*This result brought to you by the "Huff'N'Puff HP Potterhead Potheads"** group on Facebook so look us up. We're accepting applications for new mods. keep it 💯!!</div>
         </div>
       );
-    } else if (winningResult === RESULT_GREEN) {
+    } else if (result === RESULT_GREEN) {
       resultText = (
         <div>
           <h1>You are the color GREEN.</h1>
@@ -38,7 +38,7 @@ export default class Results extends React.Component {
           </p>
         </div>
       );
-    } else if (winningResult === RESULT_BLACK) {
+    } else if (result === RESULT_BLACK) {
       resultText = (
         <div>
           <h1>You are the color BLACK.</h1>
@@ -50,8 +50,8 @@ export default class Results extends React.Component {
     return (
       <>
         {resultText}
-        <div className="button try-again" onClick={() => this.props.setGameState(RESET, { resultAchieved: winningResult })}>Try again?</div>
-        {winningResult === RESULT_YELLOW && (
+        <div className="button try-again" onClick={() => console.log('try again')}>Try again?</div>
+        {result === RESULT_YELLOW && (
           <div className="results-subtext-2">(**not an actual facebook group)</div>
         )}
       </>

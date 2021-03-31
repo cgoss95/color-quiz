@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../index.css';
-import { randGradientBg, screenBg, resultPageStyle } from '../../style-functions.js';
+import { randGradientBg, screenBg, resultPageStyle, FlyingStars } from '../../style-functions.js';
 import HomepageLink from '../HomepageLink';
 import DATA from '../../data';
 import Results from '../Results';
@@ -62,6 +62,11 @@ const App = () => {
     return resultsAchieved.length;
   };
 
+  const selectAnswer = (choice) => {
+    incrScore(choice.result, choice.add);
+    incrLevel();
+  }
+
   const resetGame = () => {
     markAchievement();
     setName(initState.name);
@@ -69,33 +74,12 @@ const App = () => {
     setLevel(initState.level);
   };
 
-  // level
-  const onEventHandler = (e) => {
-    const { level } = this.props.gameState;
-    const { value } = e.target;
-    if (DATA[level].type === START) {
-      this.props.setGameState(SET_LEVEL);
-    } else if (DATA[level].type === QUESTION_TYPE_MULTIPLE) {
-      this.props.setGameState(SET_RESULTS, {
-        add: DATA[level].choices[value].add,
-        result_index: DATA[level].choices[value].result,
-      });
-      this.props.setGameState(SET_LEVEL);
-    } else {
-      console.log('error');
-    }
-  };
-
-  const isTitlePage = level === 0;
-  const isQPage = level > 0 && level < DATA.length - 1;
-  const isResultPage = level === DATA.length - 1;
-
   // let gameContent = <Level />;
 
   const ResultPage = () => (
     <div style={resultPageStyle[getResult()]}>
       <div className="results">
-        <Results gameState={this.props.gameState} setGameState={this.props.setGameState} />
+        <Results result={getResult()} setGameState={() => console.log('set game state')} />
       </div>
     </div>
   );
@@ -106,7 +90,7 @@ const App = () => {
     const renderAnswers = () => {
       return DATA[level].choices.map((c) => (
         <div>
-          <input type="button" onClick={() => incrScore(c.result, c.add)} value={c} />
+          <input type="button" onClick={() => selectAnswer(c)} value={c} />
           <label>{' ' + c.answer}</label>
         </div>
       ));
@@ -127,7 +111,7 @@ const App = () => {
       <>
         {/* <FlyingStars isRandomized={emojiMode} /> */}
         <div className="start-screen">
-          <div className="start-header" onClick={() => console.log('start game')}>
+          <div className="start-header" onClick={() => incrLevel()}>
             <div className="start-the">The</div>
             <div className="start-color-quiz"> Color Quiz</div>
           </div>
@@ -143,7 +127,18 @@ const App = () => {
     );
   };
 
-  return <div className="main">{isTitlePage ? <TitlePage emojiModeHandler={() => console.log('emoji mode')} /> : null}</div>;
+  const isTitlePage = level === 0;
+  const isQPage = level > 0 && level < DATA.length - 1;
+  const isResultPage = level === DATA.length - 1;
+
+
+  return (
+    <div className="main">
+      {isTitlePage ? <TitlePage emojiModeHandler={() => console.log('emoji mode')} /> : null}
+      {isQPage ? <QPage /> : null}
+      {isResultPage ? <ResultPage /> : null}
+    </div>
+    );
 };
 
 export default App;
