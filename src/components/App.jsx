@@ -1,10 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {
-  randGradientBg,
-  screenBg,
-  resultPageStyle,
-  FlyingStars,
-} from '../style-functions.js';
+import React, { useState } from 'react';
+import { Router, Route, Switch } from "react-router";
 import HomepageLink from './HomepageLink';
 import DATA from '../data';
 import QuestionPage from './Pages/QuestionPage';
@@ -14,7 +9,7 @@ import TitlePage from './Pages/TitlePage';
 const initState = {
   name: '',
   tally: [0, 0, 0, 0, 0],
-  level: 1,
+  level: 0,
   emojiMode: false,
 };
 
