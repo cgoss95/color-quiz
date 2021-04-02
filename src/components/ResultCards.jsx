@@ -45,7 +45,7 @@ export const Red = () => (
 export const Blue = () => (
   <div>
     <h1>You are the color BLUE.</h1>
-    <p>Haha! Thought you were going to get red, didn't you? You're probably not the type to expect the unexpected. Sad!</p>
+    <p>Thought you were going to get red, didn't you? You're probably not the type to expect the unexpected.</p>
   </div>
 );
 
@@ -56,10 +56,6 @@ export const Yellow = () => (
       This is a pretty good indication you're a Gryffindor. I'm a Hufflepuff and <span className="underline">I strongly dislike</span> Gryffindors. Navigate to your browser's corresponding ❌ button
       to get your big hiney OUT of here!!*
     </p>
-    <div css="results-subtext-1">
-      *This result brought to you by the "Huff'N'Puff HP Potterhead Potheads"** group on Facebook so look us up. We're accepting applications for new mods. keep it 💯!!
-    </div>
-    <div css="results-subtext-2">(**not an actual facebook group)</div>
   </div>
 );
 

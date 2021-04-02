@@ -6,21 +6,23 @@ const QuestionPage = ({ onSelectAnswer, level }) => {
   const choices = DATA[level].choices;
 
   return (
-    <div className="question-page page">
-      <div className="question-container">
-        <div className="question">{question}</div>
-        <div className="answers">
-          {choices.map((c) => (
-            <div>
-              <input
-                className="select-btn"
-                type="button"
-                onClick={() => onSelectAnswer(c.result, c.add)}
-                value={c.answer}
-              />
-              <label>{' ' + c.answer}</label>
-            </div>
-          ))}
+    <div className="page question-page">
+      <div className="content">
+        <div className="question-container">
+          <div className="question">{question}</div>
+          <div className="answers">
+            {choices.map((c) => (
+              <div>
+                <input
+                  className="select-btn"
+                  type="button"
+                  onClick={() => onSelectAnswer(c.result, c.add)}
+                  value={c.answer}
+                />
+                <label>{' ' + c.answer}</label>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
