@@ -1,0 +1,84 @@
+:root {
+  font-size: 25px;
+}
+
+html {
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  background-color: #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.button {
+  border: 5px solid white;
+  color: white;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 800;
+  background-color: rgba(128, 128, 128, 0.5);
+  border-radius: 15px;
+  /* width: 150px; */
+  box-shadow: 0px 5px #ffffff;
+  padding: 3px 5px 5px 5px;
+  width: fit-content;
+
+  &:hover {
+    position: relative;
+    top: 1px;
+    box-shadow: 0px 4px #ffffff;
+    cursor: pointer;
+  }
+
+  &:active {
+    position: relative;
+    top: 3px;
+    box-shadow: 0px 2px #ffffff;
+    cursor: pointer;
+  }
+
+  &.try-again {
+    width: fit-content;
+    font-size: 5vw;
+    padding: 0.5rem;
+  }
+}
+
+.flying-stars {
+  color: white;
+  font-size: 100px;
+  font-family: 'Pacifico';
+  position: relative;
+  animation: moveAcross 50s linear infinite;
+  z-index: 0;
+}

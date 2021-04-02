@@ -1,0 +1,34 @@
+
+.results-page {
+  color: white;
+  font-family: 'Dosis', sans-serif;
+  font-size: 2rem;
+  // text-align: left;
+
+  .results-page-inner {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+  }
+
+  .results-subtext-1 {
+    font-size: 18px;
+    /* margin: 10px; */
+    font-family: monospace;
+    font-weight: normal;
+  }
+
+  .results-subtext-2 {
+    font-size: 16px;
+    margin-top: 25px;
+  }
+
+  h1 {
+    font-size: 6vw;
+  }
+
+  p {
+    font-size: 4vw;
+  }
+}

@@ -1,0 +1,66 @@
+
+.title-page {
+  .title-header {
+    position: relative;
+    padding: 4vw 0;
+    // font
+    font-family: 'Pacifico', cursive;
+    font-size: 15vw;
+    text-shadow: 0.5vw -0.5vw 0 #ffff80;
+    background: linear-gradient(#ffff80, #66ffcc, #0088ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    .the {
+      display: block;
+      position: absolute;
+      background: $dreamscicle;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    .emoji-mode {
+      width: 150px;
+    }
+  }
+
+  .title-subtext {
+    font-size: 5vw;
+    color: $dreamscicle;
+    font-family: 'Pacifico';
+    z-index: 200;
+    margin-bottom: 50px;
+  }
+
+  .corner-text {
+    font-family: 'Pacifico';
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+  }
+}
+
+
+.title-page {
+  /* padding-bottom: 100px; */
+  background: linear-gradient(45deg, #878ca6, #6298fe);
+  background-color: blue;
+  /* background */
+  display: flex;
+  flex-direction: column;
+}
+
+.title-page > div {
+  text-align: center;
+}

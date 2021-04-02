@@ -1,6 +1,8 @@
+/** @jsx jsx */
 import React from 'react';
+import { jsx, css } from '@emotion/react';
 import { RESULT_RED, RESULT_BLUE, RESULT_YELLOW, RESULT_GREEN, RESULT_BLACK, RESET } from '../../constants';
-import { Red, Blue, Yellow, Green, Black, resultPageStyle } from '../result-cards';
+import { Red, Blue, Yellow, Green, Black, resultPageStyle } from '../ResultCards';
 
 const Result = ({ result }) => {
   switch (result) {
@@ -26,8 +28,8 @@ const Result = ({ result }) => {
 
 const ResultsPage = ({ onReset, result }) => {
   return (
-    <div className="results-page page" style={resultPageStyle[result]}>
-      <div class="results-page">
+    <div className="results-page page" css={resultPageStyle[result]}>
+      <div class="results-page-inner">
         <Result result={result} />
         <div className="button try-again" onClick={() => onReset()}>
           Try again?

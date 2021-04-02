@@ -1,0 +1,18 @@
+@import './_variables.scss';
+@import './_normalize.scss';
+@import './_base.scss';
+
+@import './HomepageLink.scss';
+@import './TitlePage.scss';
+@import './QuestionPage.scss';
+@import './ResultsPage.scss';
+
+
+@keyframes moveAcross {
+  0% {
+  }
+  100% {
+    -webkit-transform: translateX(3000px) translateY(3000px) rotate(3600deg);
+    transform: translateX(3500px) translateY(3500px) rotate(3600deg);
+  }
+}

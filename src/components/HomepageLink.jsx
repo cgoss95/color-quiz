@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const HomepageLink = () => (
   <div className="homepage-link">
     <a href="http://ceci.dev/">

@@ -4,17 +4,17 @@ import {
   screenBg,
   resultPageStyle,
   FlyingStars,
-} from '../../style-functions.js';
-import HomepageLink from '../HomepageLink';
-import DATA from '../../data';
-import QuestionPage from '../Pages/QuestionPage';
-import ResultsPage from '../Pages/ResultsPage';
-import TitlePage from '../Pages/TitlePage';
+} from '../style-functions.js';
+import HomepageLink from './HomepageLink';
+import DATA from '../data';
+import QuestionPage from './Pages/QuestionPage';
+import ResultsPage from './Pages/ResultsPage';
+import TitlePage from './Pages/TitlePage';
 
 const initState = {
   name: '',
   tally: [0, 0, 0, 0, 0],
-  level: 0,
+  level: 1,
   emojiMode: false,
 };
 
@@ -37,9 +37,9 @@ const App = () => {
     return lgstI;
   };
 
-  const toggleEmojiMode = () => setEmojiMode(!emojiMode);
+  const toggleEmojiMode = () => setEmojiMode((s) => !s);
 
-  const incrLevel = () => setLevel(level + 1);
+  const incrLevel = () => setLevel((s) => s + 1);
 
   const incrScore = (i, pToAdd) => {
     setTally((oldTally) => {
@@ -89,19 +89,19 @@ const App = () => {
   return (
     <div className="app">
       <HomepageLink />
-      {isTitlePage ? (
+      {isTitlePage && (
         <TitlePage
           onStartGame={incrLevel}
           onToggleEmojiMode={toggleEmojiMode}
           resultsLeft={5 - getAchievementCount()}
         />
-      ) : null}
-      {isQuestionPage ? (
+      )}
+      {isQuestionPage && (
         <QuestionPage onSelectAnswer={selectAnswer} level={level} />
-      ) : null}
-      {isResultPage ? (
+      )}
+      {isResultPage && (
         <ResultsPage onReset={resetGame} result={getResult()} />
-      ) : null}
+      )}
     </div>
   );
 };

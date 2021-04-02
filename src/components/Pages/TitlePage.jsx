@@ -13,7 +13,7 @@ const TitlePage = ({ resultsLeft, onStartGame, onToggleEmojiMode }) => {
         destinations
       </div>
       <div className="corner-text">Click title to start!</div>
-      <div className="cool-mode button" onClick={onToggleEmojiMode}>
+      <div className="emoji-mode button" onClick={onToggleEmojiMode}>
         emoji mode
       </div>
     </div>
