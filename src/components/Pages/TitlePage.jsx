@@ -1,4 +1,12 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useHistory,
+} from 'react-router-dom';
 
 const TitlePage = ({ resultsLeft, onStartGame, onToggleEmojiMode }) => {
   return (
@@ -9,7 +17,7 @@ const TitlePage = ({ resultsLeft, onStartGame, onToggleEmojiMode }) => {
         Color Quiz
       </div>
       <div className="title-subtext">
-        A colorful journey... <span class="underline">{resultsLeft}</span>{' '}
+        A colorful journey... <span className="underline">{resultsLeft}</span>{' '}
         destinations
       </div>
       <div className="corner-text">Click title to start!</div>

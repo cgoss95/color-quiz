@@ -1,7 +1,15 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+} from 'react-router-dom';
 import DATA from '../../data';
 
-const QuestionPage = ({ onSelectAnswer, level }) => {
+const QuestionPage = ({ onSelectAnswer }) => {
+  const { level } = useParams();
   const question = DATA[level].question;
   const choices = DATA[level].choices;
 
@@ -11,15 +19,15 @@ const QuestionPage = ({ onSelectAnswer, level }) => {
         <div className="question-container">
           <div className="question">{question}</div>
           <div className="answers">
-            {choices.map((c) => (
+            {choices.map((choice, choiceI) => (
               <div>
                 <input
                   className="select-btn"
                   type="button"
-                  onClick={() => onSelectAnswer(c.result, c.add)}
-                  value={c.answer}
+                  onClick={() => onSelectAnswer(choiceI)}
+                  value={choice.answer}
                 />
-                <label>{' ' + c.answer}</label>
+                <label>{' ' + choice.answer}</label>
               </div>
             ))}
           </div>

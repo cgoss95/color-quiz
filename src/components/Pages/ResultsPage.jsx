@@ -44,7 +44,7 @@ const ResultsPage = ({ onReset, result }) => {
   return (
     <div className="page results-page" css={resultPageStyle[result]}>
       <div className="content">
-        <div class="results-page-inner">
+        <div className="results-page-inner">
           <Result result={result} />
           <div className="button try-again" onClick={() => onReset()}>
             Try again?
