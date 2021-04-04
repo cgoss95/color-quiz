@@ -67,7 +67,7 @@ const App = () => {
     if (localStorage.getItem('resultsAchieved')) {
       resultsAchieved = JSON.parse(localStorage.getItem('resultsAchieved'));
     }
-    if (!resultsAchieved.includes(result)) {
+    if (!resultsAchieved.includes(result) && result > -1) {
       resultsAchieved.push(result);
     }
     localStorage.setItem('resultsAchieved', JSON.stringify(resultsAchieved));
