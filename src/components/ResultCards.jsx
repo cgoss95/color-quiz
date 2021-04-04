@@ -53,8 +53,7 @@ export const Yellow = () => (
   <div>
     <h1>You are the color YELLOW.</h1>
     <p>
-      This is a pretty good indication you're a Gryffindor. I'm a Hufflepuff and <span className="underline">I strongly dislike</span> Gryffindors. Navigate to your browser's corresponding ❌ button
-      to get your big hiney OUT of here!!*
+      Pat yourself on the back real hard now because yellow is the best color.
     </p>
   </div>
 );
@@ -64,7 +63,7 @@ export const Green = () => (
     <h1>You are the color GREEN.</h1>
     <p>
       Riding the waves of life, you are constantly searching for a purpose. Before, you were asleep. But now, you are awake. Your eyes were closed but now you see. That door that was previously closed
-      is now open. You miss 100% of the shots you don't take. Get out there. Otherwise, you'll stay inside.
+      is now open. You miss 100% of the shots you don't take. Real eyes realize real lies. Get out there. Otherwise, you'll stay inside.
     </p>
   </div>
 );

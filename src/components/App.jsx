@@ -13,6 +13,7 @@ import DATA from '../data';
 import QuestionPage from './Pages/QuestionPage';
 import ResultsPage from './Pages/ResultsPage';
 import TitlePage from './Pages/TitlePage';
+import FlyingStars from './FlyingStars';
 
 const initState = {
   name: '',
@@ -30,18 +31,13 @@ const getQNum = (p) => {
 };
 
 const App = () => {
-  const [name, setName] = useState(initState.name);
-  const [tally, setTally] = useState(initState.tally);
   const [answers, setAnswers] = useState(initState.answers);
-  const [level, setLevel] = useState(initState.level);
   const [result, setResult] = useState(initState.result);
   const [emojiMode, setEmojiMode] = useState(initState.emojiMode);
-  const resultsAchieved = useState();
 
   let history = useHistory();
 
   const incrLevel = () => {
-    // calculateScore();
     const p = history.location.pathname;
     const nextNum = getQNum(p) + 1;
     if (p === '/') {
@@ -52,7 +48,6 @@ const App = () => {
       calculateScore();
       history.push('/results');
     }
-    // setLevel((s) => s + 1);
   };
 
   const toggleEmojiMode = () => setEmojiMode((s) => !s);
@@ -96,10 +91,7 @@ const App = () => {
 
   const resetGame = () => {
     markAchievement();
-    // setName(initState.name);
-    // setTally(initState.tally);
     setAnswers(initState.answers);
-    // setLevel(initState.level);
     history.push('/');
   };
 
@@ -136,7 +128,6 @@ const App = () => {
   }, [answers, history]);
 
   return (
-    // <Router>
     <div className="app">
       <HomepageLink />
       <Switch>
@@ -144,18 +135,24 @@ const App = () => {
           exact
           path="/"
           render={(props) => (
-            <TitlePage
-              {...props}
-              onStartGame={incrLevel}
-              onToggleEmojiMode={toggleEmojiMode}
-              resultsLeft={5 - getAchievementCount()}
-            />
+            <>
+              <FlyingStars emojiMode={emojiMode} />
+              <TitlePage
+                {...props}
+                onStartGame={incrLevel}
+                onToggleEmojiMode={toggleEmojiMode}
+                resultsLeft={5 - getAchievementCount()}
+              />
+            </>
           )}
         ></Route>
         <Route
           path="/q/:level"
           render={(props) => (
-            <QuestionPage {...props} onSelectAnswer={selectAnswer} />
+            <>
+              <FlyingStars emojiMode={emojiMode} />
+              <QuestionPage {...props} onSelectAnswer={selectAnswer} />
+            </>
           )}
         ></Route>
         <Route
@@ -166,7 +163,6 @@ const App = () => {
         ></Route>
       </Switch>
     </div>
-    // </Router>
   );
 };
 

@@ -1,12 +1,12 @@
+/** @jsx jsx */
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
   useParams,
 } from 'react-router-dom';
+import { randGradientBg } from '../../style-functions';
 import DATA from '../../data';
+import { jsx, css } from '@emotion/react';
 
 const QuestionPage = ({ onSelectAnswer }) => {
   const { level } = useParams();
@@ -14,7 +14,7 @@ const QuestionPage = ({ onSelectAnswer }) => {
   const choices = DATA[level].choices;
 
   return (
-    <div className="page question-page">
+    <div className="page question-page" css={randGradientBg()}>
       <div className="content">
         <div className="question-container">
           <div className="question">{question}</div>

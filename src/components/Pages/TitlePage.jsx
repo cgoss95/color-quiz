@@ -1,12 +1,4 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useHistory,
-} from 'react-router-dom';
 
 const TitlePage = ({ resultsLeft, onStartGame, onToggleEmojiMode }) => {
   return (
@@ -18,7 +10,7 @@ const TitlePage = ({ resultsLeft, onStartGame, onToggleEmojiMode }) => {
       </div>
       <div className="title-subtext">
         A colorful journey... <span className="underline">{resultsLeft}</span>{' '}
-        destinations
+        possibilities
       </div>
       <div className="corner-text">Click title to start!</div>
       <div className="emoji-mode button" onClick={onToggleEmojiMode}>

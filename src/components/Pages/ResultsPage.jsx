@@ -7,7 +7,6 @@ import {
   RESULT_YELLOW,
   RESULT_GREEN,
   RESULT_BLACK,
-  RESET,
 } from '../../constants';
 import {
   Red,
