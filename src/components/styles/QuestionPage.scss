@@ -6,7 +6,7 @@
 
   .question-container {
     text-align: left;
-    background-color: rgba(128, 128, 128, 0.5);
+    background-color: rgba(195, 195, 195, 0.5);
     padding: 2rem;
     border-radius: 2rem;
   }
@@ -34,8 +34,21 @@
     border-radius: 50px;
 
     &:active {
-      border: 10px solid white;
+      border: 6px solid white;
       background-color: lightcoral;
+    }
+  }
+
+  .answer-choice {
+    .feedback {
+      border: none;
+      margin: 0 1rem;
+      outline: none;
+
+      &:hover {
+        cursor: url('./pomeranian.png'),
+          auto;
+      }
     }
   }
 }

@@ -1,12 +1,52 @@
 /** @jsx jsx */
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  useParams,
-} from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, useParams } from 'react-router-dom';
 import { randGradientBg } from '../../style-functions';
 import DATA from '../../data';
 import { jsx, css } from '@emotion/react';
+
+const AnswerChoice = ({ choice, onSelectAnswer }) => {
+  const [showInput, setShowInput] = useState(false);
+  const { answer, color, input } = choice;
+
+  const onKeyPressHandler = ({ key }) => {
+    if (key === 'Enter') {
+      setShowInput(false);
+      onSelectAnswer();
+    }
+  };
+
+  const onClickHandler = () => {
+    if (input) {
+      setShowInput(true);
+    } else {
+      onSelectAnswer();
+    }
+  };
+
+  return (
+    <div className="answer-choice">
+      <input
+        className="select-btn"
+        type="button"
+        onClick={onClickHandler}
+        value={answer}
+      />
+      <label style={{ color }}>{' ' + answer}</label>
+      {showInput && (
+        <>
+        <input
+          className="feedback"
+          type="text"
+          onKeyPress={onKeyPressHandler}
+          placeholder="Your name"
+        ></input>
+        {/* <sup>Enter your name so I can add it here</sup> */}
+        </>
+      )}
+    </div>
+  );
+};
 
 const QuestionPage = ({ onSelectAnswer }) => {
   const { level } = useParams();
@@ -20,15 +60,11 @@ const QuestionPage = ({ onSelectAnswer }) => {
           <div className="question">{question}</div>
           <div className="answers">
             {choices.map((choice, choiceI) => (
-              <div>
-                <input
-                  className="select-btn"
-                  type="button"
-                  onClick={() => onSelectAnswer(choiceI)}
-                  value={choice.answer}
-                />
-                <label>{' ' + choice.answer}</label>
-              </div>
+              <AnswerChoice
+                key={choice.answer}
+                choice={choice}
+                onSelectAnswer={onSelectAnswer.bind(null, choiceI)}
+              />
             ))}
           </div>
         </div>
