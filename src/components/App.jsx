@@ -5,6 +5,7 @@ import {
   Route,
   Link,
   useParams,
+  Redirect,
   useHistory,
   withRouter,
 } from 'react-router-dom';
@@ -16,15 +17,12 @@ import TitlePage from './Pages/TitlePage';
 import FlyingStars from './FlyingStars';
 
 const initState = {
-  name: '',
-  tally: [0, 0, 0, 0, 0],
   answers: [],
-  level: 0,
   emojiMode: false,
   result: -1,
 };
 
-const getQNum = (p) => {
+const getQuestionNum = (p) => {
   const lastChar = p.substring(p.length - 1, p.length);
   const num = Number(lastChar);
   return num;
@@ -39,11 +37,11 @@ const App = () => {
 
   const incrLevel = () => {
     const p = history.location.pathname;
-    const nextNum = getQNum(p) + 1;
+    const nextNum = getQuestionNum(p) + 1;
     if (p === '/') {
-      history.push('/q/1');
-    } else if (p.includes('/q/') && nextNum < DATA.length - 1) {
-      history.push('/q/' + nextNum);
+      history.push('/question/1');
+    } else if (p.includes('/question/') && nextNum < DATA.length - 1) {
+      history.push('/question/' + nextNum);
     } else {
       calculateScore();
       history.push('/results');
@@ -57,7 +55,7 @@ const App = () => {
       return [...s, choiceI];
     });
 
-  const popAnswer = (choiceI) =>
+  const popAnswer = () =>
     setAnswers((s) => {
       const newS = [...s];
       newS.pop();
@@ -147,7 +145,7 @@ const App = () => {
           )}
         ></Route>
         <Route
-          path="/q/:level"
+          path="/question/:level"
           render={(props) => (
             <>
               <FlyingStars emojiMode={emojiMode} />
@@ -157,10 +155,15 @@ const App = () => {
         ></Route>
         <Route
           path="/results"
-          render={(props) => (
-            <ResultsPage {...props} onReset={resetGame} result={result} />
-          )}
+          render={(props) => {
+            if (result > -1) {
+              return <ResultsPage {...props} onReset={resetGame} result={result} />;
+            } else {
+              history.push('/');
+            }
+          }}
         ></Route>
+        <Redirect to="/" />
       </Switch>
     </div>
   );
