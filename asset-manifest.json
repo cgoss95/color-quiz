@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/color-quiz/static/css/main.85951fc3.chunk.css",
-    "main.js": "/color-quiz/static/js/main.930f4922.chunk.js",
-    "main.js.map": "/color-quiz/static/js/main.930f4922.chunk.js.map",
+    "main.css": "/color-quiz/static/css/main.bf67dc87.chunk.css",
+    "main.js": "/color-quiz/static/js/main.339e7a22.chunk.js",
+    "main.js.map": "/color-quiz/static/js/main.339e7a22.chunk.js.map",
     "runtime-main.js": "/color-quiz/static/js/runtime-main.0c1a1c8d.js",
     "runtime-main.js.map": "/color-quiz/static/js/runtime-main.0c1a1c8d.js.map",
-    "static/js/2.1e786ba6.chunk.js": "/color-quiz/static/js/2.1e786ba6.chunk.js",
-    "static/js/2.1e786ba6.chunk.js.map": "/color-quiz/static/js/2.1e786ba6.chunk.js.map",
+    "static/js/2.a3c189d9.chunk.js": "/color-quiz/static/js/2.a3c189d9.chunk.js",
+    "static/js/2.a3c189d9.chunk.js.map": "/color-quiz/static/js/2.a3c189d9.chunk.js.map",
     "index.html": "/color-quiz/index.html",
-    "precache-manifest.c2383d12eafa64750c8a35c8ee2a84ff.js": "/color-quiz/precache-manifest.c2383d12eafa64750c8a35c8ee2a84ff.js",
+    "precache-manifest.3d1c379f9b3b64f76ba2e0702f91b5ed.js": "/color-quiz/precache-manifest.3d1c379f9b3b64f76ba2e0702f91b5ed.js",
     "service-worker.js": "/color-quiz/service-worker.js",
-    "static/css/main.85951fc3.chunk.css.map": "/color-quiz/static/css/main.85951fc3.chunk.css.map",
-    "static/js/2.1e786ba6.chunk.js.LICENSE.txt": "/color-quiz/static/js/2.1e786ba6.chunk.js.LICENSE.txt"
+    "static/css/main.bf67dc87.chunk.css.map": "/color-quiz/static/css/main.bf67dc87.chunk.css.map",
+    "static/js/2.a3c189d9.chunk.js.LICENSE.txt": "/color-quiz/static/js/2.a3c189d9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.0c1a1c8d.js",
-    "static/js/2.1e786ba6.chunk.js",
-    "static/css/main.85951fc3.chunk.css",
-    "static/js/main.930f4922.chunk.js"
+    "static/js/2.a3c189d9.chunk.js",
+    "static/css/main.bf67dc87.chunk.css",
+    "static/js/main.339e7a22.chunk.js"
   ]
 }
