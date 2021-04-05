@@ -1,9 +1,14 @@
 /** @jsx jsx */
 import React, { useState } from 'react';
-import { BrowserRouter as Router, useParams } from 'react-router-dom';
-import { randGradientBg } from '../../style-functions';
+import { useParams } from 'react-router-dom';
 import DATA from '../../data';
 import { jsx, css } from '@emotion/react';
+
+const getRandomAngle = () => Math.random() * 360;
+const getRandomHex = () => (Math.random() * 255 ** 3).toString(16).slice(0, 6);
+const randGradientBg = () => css`
+  background-image: linear-gradient(${getRandomAngle()}deg, #${getRandomHex()}, #${getRandomHex()});
+`;
 
 const AnswerChoice = ({ choice, onSelectAnswer }) => {
   const [showInput, setShowInput] = useState(false);
