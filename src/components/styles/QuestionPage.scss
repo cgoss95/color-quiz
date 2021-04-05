@@ -2,13 +2,15 @@
   font-size: 2rem;
   font-family: 'Dosis', sans-serif;
   color: white;
-  // background: linear-gradient(lightblue, coral);
 
   .question-container {
     text-align: left;
     background-color: rgba(195, 195, 195, 0.5);
     padding: 2rem;
     border-radius: 2rem;
+    text-shadow: 0 2px 0px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 
   .question {
@@ -23,32 +25,53 @@
     color: transparent;
     width: 2rem;
     height: 2rem;
-    top: -0.3rem;
-    // content: '';
+    top: 0.2rem;
     position: relative;
-    background-color: white;
+    background-color: $lightgrey;
     display: inline-block;
     visibility: visible;
-    margin: 2px;
+    margin: 0 0.5rem 0 0;
     border: none;
     border-radius: 50px;
+    box-shadow: 0 2px rgba(0, 0, 0, 0.2);
 
     &:active {
       border: 6px solid white;
-      background-color: lightcoral;
+      background-color: $lightpeach;
     }
   }
 
   .answer-choice {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 0.2rem;
+    // color: $lightgrey;
+    opacity: 0.85;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+      label {
+        color: white;
+        cursor: pointer;
+      }
+
+      .select-btn {
+        background-color: white;
+      }
+    }
+
+    &:active {
+      .select-btn {
+        border: 6px solid white;
+        background-color: $lightpeach;
+      }
+    }
+
     .feedback {
       border: none;
       margin: 0 1rem;
       outline: none;
-
-      &:hover {
-        cursor: url('./pomeranian.png'),
-          auto;
-      }
     }
   }
 }

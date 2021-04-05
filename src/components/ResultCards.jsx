@@ -45,7 +45,7 @@ export const Red = () => (
 export const Blue = () => (
   <div>
     <h1>You are the color BLUE.</h1>
-    <p>Thought you were going to get red, didn't you? You're probably not the type to expect the unexpected.</p>
+    <p>Thought you were going to get red, didn't you? You're probably not the type to expect the unexpected. ¯\_(ツ)_/¯</p>
   </div>
 );
 

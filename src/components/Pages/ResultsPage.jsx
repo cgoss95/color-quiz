@@ -40,13 +40,14 @@ const Result = ({ result }) => {
 };
 
 const ResultsPage = ({ onReset, result }) => {
+  const resetBtnText = result !== RESULT_YELLOW ? 'Try again?' : 'Tubular!';
   return (
     <div className="page results-page" css={resultPageStyle[result]}>
       <div className="content">
         <div className="results-page-inner">
           <Result result={result} />
           <div className="button try-again" onClick={() => onReset()}>
-            Try again?
+            {resetBtnText}
           </div>
         </div>
       </div>

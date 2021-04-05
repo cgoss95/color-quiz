@@ -25,11 +25,10 @@ const AnswerChoice = ({ choice, onSelectAnswer }) => {
   };
 
   return (
-    <div className="answer-choice">
+    <div className="answer-choice" onClick={onClickHandler}>
       <input
         className="select-btn"
         type="button"
-        onClick={onClickHandler}
         value={answer}
       />
       <label style={{ color }}>{' ' + answer}</label>
@@ -41,7 +40,7 @@ const AnswerChoice = ({ choice, onSelectAnswer }) => {
           onKeyPress={onKeyPressHandler}
           placeholder="Your name"
         ></input>
-        {/* <sup>Enter your name so I can add it here</sup> */}
+        <sup>Enter your name so I can add it here</sup>
         </>
       )}
     </div>
@@ -61,7 +60,7 @@ const QuestionPage = ({ onSelectAnswer }) => {
           <div className="answers">
             {choices.map((choice, choiceI) => (
               <AnswerChoice
-                key={choice.answer}
+                key={choice.answer.substring(0, 6)}
                 choice={choice}
                 onSelectAnswer={onSelectAnswer.bind(null, choiceI)}
               />

@@ -17,7 +17,7 @@ import TitlePage from './Pages/TitlePage';
 import FlyingStars from './FlyingStars';
 
 const initState = {
-  answers: [],
+  responses: [],
   emojiMode: false,
   result: -1,
 };
@@ -29,8 +29,7 @@ const getQuestionNum = (p) => {
 };
 
 const App = () => {
-  const [answers, setAnswers] = useState(initState.answers);
-  const [result, setResult] = useState(initState.result);
+  const [responses, setResponses] = useState(initState.responses);
   const [emojiMode, setEmojiMode] = useState(initState.emojiMode);
 
   let history = useHistory();
@@ -43,26 +42,23 @@ const App = () => {
     } else if (p.includes('/question/') && nextNum < DATA.length - 1) {
       history.push('/question/' + nextNum);
     } else {
-      calculateScore();
       history.push('/results');
     }
   };
 
   const toggleEmojiMode = () => setEmojiMode((s) => !s);
 
-  const markAnswer = (choiceI) =>
-    setAnswers((s) => {
-      return [...s, choiceI];
-    });
+  const markAnswer = (choiceI) => setResponses((s) => [...s, choiceI]);
 
   const popAnswer = () =>
-    setAnswers((s) => {
+    setResponses((s) => {
       const newS = [...s];
       newS.pop();
       return newS;
     });
 
   const markAchievement = () => {
+    const result = calculateScore();
     let resultsAchieved = [];
     if (localStorage.getItem('resultsAchieved')) {
       resultsAchieved = JSON.parse(localStorage.getItem('resultsAchieved'));
@@ -81,37 +77,39 @@ const App = () => {
     return resultsAchieved.length;
   };
 
+  const resetGame = () => {
+    markAchievement();
+    setResponses(initState.responses);
+    history.push('/');
+  };
+
   const selectAnswer = (choiceI) => {
-    console.log(choiceI);
     markAnswer(choiceI);
     incrLevel();
   };
 
-  const resetGame = () => {
-    markAchievement();
-    setAnswers(initState.answers);
-    history.push('/');
-  };
-
-  const getResult = (tally) => {
-    let largest = -1;
-    let lgstI = -1;
-    tally.forEach((r, i) => {
-      if (r > largest) {
-        largest = r;
-        lgstI = i;
-      }
-    });
-    return lgstI;
-  };
 
   const calculateScore = () => {
-    let finalTally = [0, 0, 0, 0, 0];
-    answers.forEach((choice, i) => {
-      const cObj = DATA[i + 1].choices[choice];
-      finalTally[cObj.result] += cObj.add;
-    });
-    setResult(getResult(finalTally));
+    try {
+      let finalTally = [0, 0, 0, 0, 0];
+      let largest = -1;
+      let lgstI = -1;
+
+      responses.forEach((choice, i) => {
+        const cObj = DATA[i + 1].choices[choice];
+        finalTally[cObj.result] += cObj.add;
+      });
+
+      finalTally.forEach((r, i) => {
+        if (r > largest) {
+          largest = r;
+          lgstI = i;
+        }
+      });
+      return lgstI;
+    } catch (_) {
+      return 0;
+    }
   };
 
   useEffect(() => {
@@ -123,7 +121,7 @@ const App = () => {
         }
       }
     });
-  }, [answers, history]);
+  }, [history, responses]);
 
   return (
     <div className="app">
@@ -155,13 +153,13 @@ const App = () => {
         ></Route>
         <Route
           path="/results"
-          render={(props) => {
-            if (result > -1) {
-              return <ResultsPage {...props} onReset={resetGame} result={result} />;
-            } else {
-              history.push('/');
-            }
-          }}
+          render={(props) => (
+            <ResultsPage
+              {...props}
+              onReset={resetGame}
+              result={calculateScore()}
+            />
+          )}
         ></Route>
         <Redirect to="/" />
       </Switch>
