@@ -3,8 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useParams,
   Redirect,
   useHistory,
   withRouter,
@@ -37,7 +35,7 @@ const App = () => {
   const incrLevel = () => {
     const p = history.location.pathname;
     const nextNum = getQuestionNum(p) + 1;
-    if (p === '/color-quiz') {
+    if (p.includes('/color-quiz')) {
       history.push('/question/1');
     } else if (p.includes('/question/') && nextNum < DATA.length - 1) {
       history.push('/question/' + nextNum);
