@@ -11,7 +11,7 @@ export const randGradientBg = () => css`
   background-image: linear-gradient(${getRandomAngle()}deg, #${getRandomHex()}, #${getRandomHex()});
 `;
 
-const coolEmojis = ['😀', '🥺', '🤬', '😄', '🤣', '🤠', '👺', '👅', '🎒'];
+const coolEmojis = ['😀', '🥺', '🧐', '😄', '🤣', '🤠', '👺', '👾', '🎒'];
 
 export const resultPageStyle = [
   { backgroundColor: '#A11111', color: 'white' },
