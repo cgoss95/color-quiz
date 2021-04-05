@@ -37,7 +37,7 @@ const App = () => {
   const incrLevel = () => {
     const p = history.location.pathname;
     const nextNum = getQuestionNum(p) + 1;
-    if (p === '/') {
+    if (p === '/color-quiz') {
       history.push('/question/1');
     } else if (p.includes('/question/') && nextNum < DATA.length - 1) {
       history.push('/question/' + nextNum);
@@ -80,7 +80,7 @@ const App = () => {
   const resetGame = () => {
     markAchievement();
     setResponses(initState.responses);
-    history.push('/');
+    history.push('/color-quiz');
   };
 
   const selectAnswer = (choiceI) => {
@@ -116,7 +116,7 @@ const App = () => {
     return history.listen((location) => {
       if (history.action === 'POP') {
         popAnswer();
-        if (location.pathname === '/') {
+        if (location.pathname === '/color-quiz') {
           resetGame();
         }
       }
@@ -129,7 +129,7 @@ const App = () => {
       <Switch>
         <Route
           exact
-          path="/"
+          path="/color-quiz"
           render={(props) => (
             <>
               <FlyingStars emojiMode={emojiMode} />
@@ -161,7 +161,7 @@ const App = () => {
             />
           )}
         ></Route>
-        <Redirect to="/" />
+        <Redirect to="/color-quiz" />
       </Switch>
     </div>
   );
